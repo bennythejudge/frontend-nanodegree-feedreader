@@ -31,8 +31,17 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+        function check_urls_feeds(feed,index) {
+            it('feed nr. ' + index + ' has a valid URL' ,function() {
+                expect(feed.url).toBeDefined();
+                expect(feed.url).not.toBe('');
+            });
+        }
 
-
+        for (var x=0; x<allFeeds.length; x++) {
+            check_urls_feeds(allFeeds[x],x);
+        }
+        
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
