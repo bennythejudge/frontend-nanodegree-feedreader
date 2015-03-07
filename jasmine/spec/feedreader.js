@@ -46,6 +46,16 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        function check_names_feeds(feed,index) {
+            it('feed nr. ' + index + ' has a valid NAME' ,function() {
+                expect(feed.name).toBeDefined();
+                expect(feed.name).not.toBe('');
+            });
+        }
+
+        for (var x=0; x<allFeeds.length; x++) {
+            check_names_feeds(allFeeds[x],x);
+        }
     });
 
 
