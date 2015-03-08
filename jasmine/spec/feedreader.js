@@ -130,7 +130,7 @@ $(function() {
             // grab the DOM 
             var feed = $('.entry');
             var feedEntries = feed.length;
-            console.log('nr. of entries in the feed div ' + feedEntries);
+            // console.log('nr. of entries in the feed div ' + feedEntries);
             // console.log(feed);
             expect(feedEntries>0).toBe(true);
             done();
@@ -143,5 +143,26 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        /** to save the state 'before' */
+        var saveBeforeContent;
+        beforeEach(function(done) {
+            // console.log('inside the beaforeEach');
+            saveBeforeContent = $('.feed').html();
+            // console.log('saveBeforeContent');
+            // console.log(saveBeforeContent);
+            // console.log(saveBeforeContent.length);
+            /** now call the loadFeed */
+            loadFeed(1, function() {
+                done();
+            });
+        });
+        it('changes the contet of the div .feed', function(done) {
+            /** get current content */
+            var saveAfterContent = $('.feed').html();
+            // console.log('saveAfterContent');
+            // console.log(saveAfterContent);
+            expect(saveBeforeContent).not.toBe(saveAfterContent);
+            done();
+        });
     });
 }());
