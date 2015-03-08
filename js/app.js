@@ -50,6 +50,7 @@ function loadFeed(id, cb) {
      * is executed.
      */
     feed.load(function(result) {
+        // console.log('inside feed.load')
         if (!result.error) {
             /* If loading the feed did not result in an error,
              * get started making the DOM manipulations required
