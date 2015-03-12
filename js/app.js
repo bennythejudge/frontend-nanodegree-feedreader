@@ -73,6 +73,7 @@ function loadFeed(id, cb) {
             entries.forEach(function(entry) {
                 container.append(entryTemplate(entry));
             });
+            //console.log(container);
         }
 
         if (cb) {

@@ -152,7 +152,7 @@ $(function() {
             // console.log(saveBeforeContent);
             // console.log(saveBeforeContent.length);
             /** now call the loadFeed */
-            loadFeed(1, function() {
+            loadFeed(3, function() {
                 done();
             });
         });
@@ -164,5 +164,37 @@ $(function() {
             expect(saveBeforeContent).not.toBe(saveAfterContent);
             done();
         });
+    });
+    
+    /* TODO: write a new test suite named "The body" */
+    describe('The body', function() {
+        /* grab the body */
+        var body = $('body');
+        // console.log(body);
+        
+        /* TODO: write a test that ensures that the body contains 4 elements
+         * with tag article
+         */
+        it('contains 4 articles tags', function() {
+            var a = $('article').length;
+            // console.log(a);
+            expect(a).toBe(4);
+        });
+
+        /* TODO: write a test that ensures that each article tag in the body 
+         * has class "entry"
+         */
+        it('and all \'article\' tags have class \'entry\'', function() {
+            var a = $('article');
+            // console.log(a);
+            // console.log(a.length);
+            for (var x=0;x<a.length;x++) {
+                // console.log(a[x].className);
+                expect(a[x].className).toBe('entry');
+            }
+        });
+        // var a = $('article').length;
+        // console.log(a);
+        
     });
 }());
