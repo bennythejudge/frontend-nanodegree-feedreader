@@ -26,21 +26,23 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+        /** a function that contains the expect for URL defined */
         function check_feed_url_is_defined(feed,index) {
             it('The URL of feed ' + index + ' is defined' ,function() {
                 expect(feed.url).toBeDefined();
             });
         };
+        /** a function that contains the expect for URL not empty */
         function check_feed_url_is_not_empty(feed,index) {
             it('The URL of feed ' + index + ' is not empty' ,function() {
                 expect(feed.url).not.toBe('');
             });
         };
+        /** the loop through all feed entries */
         for (var x=0; x<allFeeds.length; x++) {
             check_feed_url_is_defined(allFeeds[x],x);
             check_feed_url_is_not_empty(allFeeds[x],x);
@@ -50,16 +52,19 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        /** a function that contains the expect for the defined case */
         function check_feed_name_is_defined(feed,index) {
             it('The NAME in feed ' + index + ' is defined' ,function() {
                 expect(feed.name).toBeDefined();
             });
         };
+        /** a function that contains the name not empty */
         function check_feed_name_is_not_empty(feed,index) {
             it('The NAME in feed ' + index + ' is not empty' ,function() {
                 expect(feed.name).not.toBe('');
             });
         };
+        /** loop thorugh the all the feeds */
         for (var x=0; x<allFeeds.length; x++) {
             check_feed_name_is_defined(allFeeds[x],x);
             check_feed_name_is_not_empty(allFeeds[x],x);
@@ -80,7 +85,6 @@ $(function() {
         it('is hidden by default',function() {
             expect(body.hasClass('menu-hidden')).toBe(true);
         });
-        
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
@@ -88,24 +92,26 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('toggles between visible and invisible each time the menu icon is clicked', function() {
-            // grab the menu icon
+            /** grab the menu icon */
             var menuIcon = $('.menu-icon-link');
             var menuBeforeHidden;
             var menuAfterHidden;
-            // click once and check
+            /** click once and check */
             menuIcon.click();
+            /** set the before variable */
             if (body.hasClass('menu-hidden')) {
                 menuBeforeHidden = true;
             } else {
                 menuBeforeHidden = false;
             }
-            // click again and check
+            /** click again and check */
             menuIcon.click();
             if (body.hasClass('menu-hidden')) {
                 menuAfterHidden = true;
             } else {
                 menuAfterHidden = false;
             }
+            // compare before and after */
             expect(menuBeforeHidden === menuAfterHidden).not.toBe(true);
         });
     });
@@ -118,20 +124,16 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+        /** because this is a check for an asynchronous call, we use beforeEach */
         beforeEach(function(done) {
-            // console.log('inside the beaforeEach');
             loadFeed(0, function() {
-                // console.log('inside the jasmine')
                 done();
             });
         });
         it('have at least one entry after loadFeed is called', function(done) {
-            // console.log('inside the it for initial entries');
-            // grab the DOM 
+            /** grab the DOM */
             var feed = $('.entry');
             var feedEntries = feed.length;
-            // console.log('nr. of entries in the feed div ' + feedEntries);
-            // console.log(feed);
             expect(feedEntries>0).toBe(true);
             done();
         })
@@ -146,11 +148,7 @@ $(function() {
         /** to save the state 'before' */
         var saveBeforeContent;
         beforeEach(function(done) {
-            // console.log('inside the beaforeEach');
             saveBeforeContent = $('.feed').html();
-            // console.log('saveBeforeContent');
-            // console.log(saveBeforeContent);
-            // console.log(saveBeforeContent.length);
             /** now call the loadFeed */
             loadFeed(3, function() {
                 done();
@@ -159,8 +157,6 @@ $(function() {
         it('changes the contet of the div .feed', function(done) {
             /** get current content */
             var saveAfterContent = $('.feed').html();
-            // console.log('saveAfterContent');
-            // console.log(saveAfterContent);
             expect(saveBeforeContent).not.toBe(saveAfterContent);
             done();
         });
@@ -170,14 +166,12 @@ $(function() {
     describe('The body', function() {
         /* grab the body */
         var body = $('body');
-        // console.log(body);
         
         /* TODO: write a test that ensures that the body contains 4 elements
          * with tag article
          */
         it('contains 4 articles tags', function() {
             var a = $('article').length;
-            // console.log(a);
             expect(a).toBe(4);
         });
 
@@ -186,15 +180,9 @@ $(function() {
          */
         it('and all \'article\' tags have class \'entry\'', function() {
             var a = $('article');
-            // console.log(a);
-            // console.log(a.length);
             for (var x=0;x<a.length;x++) {
-                // console.log(a[x].className);
                 expect(a[x].className).toBe('entry');
             }
         });
-        // var a = $('article').length;
-        // console.log(a);
-        
     });
 }());
