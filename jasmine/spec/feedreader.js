@@ -35,18 +35,18 @@ $(function() {
             it('The URL of feed ' + index + ' is defined' ,function() {
                 expect(feed.url).toBeDefined();
             });
-        };
+        }
         /** a function that contains the expect for URL not empty */
         function check_feed_url_is_not_empty(feed,index) {
             it('The URL of feed ' + index + ' is not empty' ,function() {
                 expect(feed.url).not.toBe('');
             });
-        };
+        }
         /** the loop through all feed entries */
         for (var x=0; x<allFeeds.length; x++) {
             check_feed_url_is_defined(allFeeds[x],x);
             check_feed_url_is_not_empty(allFeeds[x],x);
-        };
+        }
         
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -57,15 +57,15 @@ $(function() {
             it('The NAME in feed ' + index + ' is defined' ,function() {
                 expect(feed.name).toBeDefined();
             });
-        };
+        }
         /** a function that contains the name not empty */
         function check_feed_name_is_not_empty(feed,index) {
             it('The NAME in feed ' + index + ' is not empty' ,function() {
                 expect(feed.name).not.toBe('');
             });
-        };
+        }
         /** loop thorugh the all the feeds */
-        for (var x=0; x<allFeeds.length; x++) {
+        for (x=0; x<allFeeds.length; x++) {
             check_feed_name_is_defined(allFeeds[x],x);
             check_feed_name_is_not_empty(allFeeds[x],x);
         }
@@ -136,7 +136,7 @@ $(function() {
             var feedEntries = feed.length;
             expect(feedEntries>0).toBe(true);
             done();
-        })
+        });
     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
