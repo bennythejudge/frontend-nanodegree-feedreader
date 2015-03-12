@@ -3,8 +3,8 @@
 var gulp = require('gulp');
 var serve = require('gulp-serve');
 var browserSync = require('browser-sync');
-var jshint = require('jshint');
 var jshint = require('gulp-jshint');
+var jshintstylish = require('jshint-stylish');
 var reload = browserSync.reload;
 
 gulp.task('serve',function() {
