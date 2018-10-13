@@ -1,4 +1,7 @@
 #P6 - feed reader - Student's README
+
+[![GuardRails badge](https://badges.production.guardrails.io/bennythejudge/frontend-nanodegree-feedreader.svg)](https://www.guardrails.io)
+
 ## Instructions to run
 1. clone the project from github:
 
